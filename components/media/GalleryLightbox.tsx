@@ -48,20 +48,7 @@ export default function GalleryLightbox({
             </div>
           );
         },
-        caption: ({ slide }) => (
-          <div className="space-y-1 text-sm text-[var(--on-overlay)]">
-            <div className="font-semibold">{slide.title}</div>
-            {slide.description ? (
-              <div className="opacity-70">{slide.description}</div>
-            ) : null}
-            {slide.program ? (
-              <div className="text-xs uppercase tracking-[0.2em] opacity-70">
-                {slide.program}
-              </div>
-            ) : null}
-          </div>
-        ),
-      }}
+      } as any}
     />
   );
 }

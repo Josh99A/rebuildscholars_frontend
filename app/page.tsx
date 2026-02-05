@@ -183,9 +183,11 @@ export default function HomePage() {
           </Reveal>
           <div className="grid gap-4 md:grid-cols-3">
             {miniGallery.map((item) => (
-              <div
+              <Link
                 key={item.src}
-                className="overflow-hidden rounded-2xl border border-[var(--border)] transition hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_36px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]"
+                href="/gallery"
+                className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)] hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_20px_40px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]"
+                aria-label={`View gallery: ${item.alt}`}
               >
                 <Image
                   src={item.src}
@@ -193,9 +195,24 @@ export default function HomePage() {
                   width={1200}
                   height={700}
                   sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="h-56 w-full object-cover"
+                  className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                 />
-              </div>
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[color-mix(in_oklab,var(--secondary)_65%,transparent)] via-transparent to-transparent opacity-70 transition duration-500 group-hover:opacity-90"
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 px-4 pb-4">
+                  <div className="space-y-1 text-[var(--on-overlay)]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em]">
+                      Program moment
+                    </p>
+                    <p className="text-sm font-semibold">{item.alt}</p>
+                  </div>
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--on-overlay)_55%,transparent)] bg-[color-mix(in_oklab,var(--secondary)_25%,transparent)] text-[var(--on-overlay)] transition group-hover:scale-105">
+                    <ArrowUpRight size={16} />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

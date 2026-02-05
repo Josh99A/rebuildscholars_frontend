@@ -12,7 +12,7 @@ export default function MediaEmbed({ url, className }: MediaEmbedProps) {
   return (
     <div
       className={cn(
-        "relative aspect-video w-full overflow-hidden rounded-2xl bg-black/10",
+        "relative aspect-video w-full overflow-hidden rounded-2xl bg-[color-mix(in_oklab,var(--secondary) 12%, transparent)]",
         className
       )}
     >

@@ -16,7 +16,7 @@ export default function ContactPage() {
           </Reveal>
           <div className="grid gap-10 md:grid-cols-[1fr_0.8fr]">
             <ContactForm />
-            <Reveal className="space-y-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
+            <Reveal className="space-y-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_36px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]">
               <div>
                 <h3 className="text-lg font-semibold">Office</h3>
                 <p className="text-sm text-[var(--muted)]">

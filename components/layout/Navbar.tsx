@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "../theme/ThemeToggle";
@@ -23,10 +24,28 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 text-lg font-semibold">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--primary)] text-white">
-            RS
-          </span>
+        <Link
+          href="/"
+          className="flex items-center gap-3 text-lg font-semibold transition hover:text-[var(--secondary)]"
+        >
+          <div className="relative h-11 w-11">
+            <Image
+              src="/images/logo-light.png"
+              alt="Re-build Scholars logo"
+              fill
+              sizes="44px"
+              className="object-contain dark:hidden"
+              priority
+            />
+            <Image
+              src="/images/logo-dark.png"
+              alt="Re-build Scholars logo"
+              fill
+              sizes="44px"
+              className="hidden object-contain dark:block"
+              priority
+            />
+          </div>
           Re-build Scholars
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -34,7 +53,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[var(--muted)] transition hover:text-[var(--text)]"
+              className="text-[var(--muted)] transition hover:text-[var(--secondary)]"
             >
               {link.label}
             </Link>
@@ -65,7 +84,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="py-2 text-[var(--muted)] transition hover:text-[var(--text)]"
+              className="py-2 text-[var(--muted)] transition hover:text-[var(--secondary)]"
               onClick={() => setOpen(false)}
             >
               {link.label}

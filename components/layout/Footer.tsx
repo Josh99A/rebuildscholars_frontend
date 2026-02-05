@@ -1,4 +1,5 @@
 ﻿import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = [
   {
@@ -25,10 +26,23 @@ export default function Footer() {
     <footer className="border-t border-[var(--border)] bg-[var(--surface)]">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
-          <div className="flex items-center gap-2 text-lg font-semibold">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--primary)] text-white">
-              RS
-            </span>
+          <div className="flex items-center gap-3 text-lg font-semibold transition hover:text-[var(--secondary)]">
+            <div className="relative h-11 w-11">
+              <Image
+                src="/images/logo-light.png"
+                alt="Re-build Scholars logo"
+                fill
+                sizes="44px"
+                className="object-contain dark:hidden"
+              />
+              <Image
+                src="/images/logo-dark.png"
+                alt="Re-build Scholars logo"
+                fill
+                sizes="44px"
+                className="hidden object-contain dark:block"
+              />
+            </div>
             Re-build Scholars
           </div>
           <p className="text-sm text-[var(--muted)]">
@@ -49,7 +63,7 @@ export default function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="transition hover:text-[var(--text)]"
+                  className="transition hover:text-[var(--secondary)]"
                 >
                   {item.label}
                 </Link>

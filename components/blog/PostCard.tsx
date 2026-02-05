@@ -6,7 +6,7 @@ import type { Post } from "@/lib/mdx";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]">
+    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] transition hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_36px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]">
       {post.cover ? (
         <Image
           src={post.cover}
@@ -25,7 +25,10 @@ export default function PostCard({ post }: { post: Post }) {
         </div>
         <div className="space-y-2">
           <h3 className="text-xl font-semibold tracking-tight">
-            <Link href={`/blog/${post.slug}`} className="hover:text-[var(--primary)]">
+            <Link
+              href={`/blog/${post.slug}`}
+              className="transition hover:text-[var(--primary)]"
+            >
               {post.title}
             </Link>
           </h3>

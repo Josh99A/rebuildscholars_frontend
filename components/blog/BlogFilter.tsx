@@ -30,7 +30,7 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
             className={cn(
               "rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]",
               category === active
-                ? "border-[var(--primary)] bg-[var(--primary)] text-white"
+                ? "border-[var(--primary)] bg-[var(--primary)] text-[var(--on-primary)]"
                 : "border-[var(--border)] text-[var(--muted)] hover:text-[var(--text)]"
             )}
           >

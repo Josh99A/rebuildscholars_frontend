@@ -58,7 +58,7 @@ export default function ProgramDetailPage({
           </Reveal>
           <Link
             href="/programs"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)] transition hover:text-[var(--primary-hover)]"
           >
             Back to programs
           </Link>

@@ -5,6 +5,11 @@
   --text:#242021; --muted:#5E5A5C; --border:#E9E4EA;
   --primary:#DE2164; --primary-hover:#B31D67;
   --secondary:#481471; --accent:#FEAEEB;
+  --teal:#2FAE9E; --indigo:#3F51B5; --amber:#F4A623; --green:#3CB371;
+  --on-primary:#FFFFFF;
+  --on-overlay:#F6F2F8;
+  --overlay: color-mix(in oklab, var(--secondary) 60%, transparent);
+  --overlay-strong: color-mix(in oklab, var(--secondary) 80%, transparent);
 }
 
 html.dark {
@@ -12,6 +17,11 @@ html.dark {
   --text:#F6F2F8; --muted:#CFC7D8; --border:#362444;
   --primary:#DE2164; --primary-hover:#F04A8B;
   --secondary:#BFA3D6; --accent:#FEAEEB;
+  --teal:#2FAE9E; --indigo:#3F51B5; --amber:#F4A623; --green:#3CB371;
+  --on-primary:#FFFFFF;
+  --on-overlay:#F6F2F8;
+  --overlay: color-mix(in oklab, var(--bg) 70%, transparent);
+  --overlay-strong: color-mix(in oklab, var(--bg) 85%, transparent);
 }
 
 @layer base {
@@ -52,7 +62,7 @@ html.dark {
 }
 
 .section-title {
-  @apply text-3xl font-semibold tracking-tight md:text-4xl;
+  @apply text-3xl font-semibold tracking-tight text-[var(--secondary)] md:text-4xl;
 }
 
 .section-kicker {
@@ -60,11 +70,11 @@ html.dark {
 }
 
 .mdx-content h2 {
-  @apply mt-8 text-2xl font-semibold;
+  @apply mt-8 text-2xl font-semibold text-[var(--secondary)];
 }
 
 .mdx-content h3 {
-  @apply mt-6 text-xl font-semibold;
+  @apply mt-6 text-xl font-semibold text-[var(--secondary)];
 }
 
 .mdx-content p {

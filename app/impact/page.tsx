@@ -25,7 +25,7 @@ export default function ImpactPage() {
             {metrics.map((metric) => (
               <Reveal
                 key={metric.label}
-                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"
+                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_36px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
                   {metric.label}
@@ -36,7 +36,7 @@ export default function ImpactPage() {
               </Reveal>
             ))}
           </div>
-          <Reveal className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8">
+          <Reveal className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8 transition hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_36px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]">
             <h2 className="text-2xl font-semibold">What families tell us</h2>
             <p className="mt-3 text-[var(--muted)]">
               "My daughter is finally excited about math. The mentor team makes

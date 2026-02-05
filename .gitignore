@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/content_base
+/Re-build scholars
 /.pnp
 .pnp.*
 .yarn/*

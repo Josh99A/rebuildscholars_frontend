@@ -31,7 +31,7 @@ export default function AboutPage() {
             ].map((item) => (
               <Reveal
                 key={item.title}
-                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6"
+                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_36px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]"
               >
                 <h3 className="text-xl font-semibold">{item.title}</h3>
                 <p className="mt-3 text-sm text-[var(--muted)]">{item.text}</p>

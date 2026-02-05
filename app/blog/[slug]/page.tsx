@@ -59,7 +59,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <article className="mdx-content space-y-6">
             <MDXRemote
               source={post.content}
-              options={mdxOptions}
+              options={mdxOptions as any}
               components={{
                 img: (props) => (
                   <MediaImage

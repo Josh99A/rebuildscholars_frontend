@@ -29,21 +29,23 @@ export type PostWithContent = Post & {
 const postsDirectory = path.join(process.cwd(), "content", "blog");
 
 export const mdxOptions = {
-  remarkPlugins: [remarkGfm],
-  rehypePlugins: [
-    rehypeSlug,
-    [rehypeAutolinkHeadings, { behavior: "wrap" }],
-    [
-      rehypePrettyCode,
-      {
-        theme: {
-          dark: "one-dark-pro",
-          light: "github-light",
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, { behavior: "wrap" }],
+      [
+        rehypePrettyCode,
+        {
+          theme: {
+            dark: "one-dark-pro",
+            light: "github-light",
+          },
+          keepBackground: false,
         },
-        keepBackground: false,
-      },
+      ],
     ],
-  ],
+  },
 };
 
 export function getPostSlugs(): string[] {

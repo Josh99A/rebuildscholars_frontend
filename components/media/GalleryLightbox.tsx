@@ -20,7 +20,7 @@ export default function GalleryLightbox({
   const slides = items.map((item) => ({
     ...item,
     type: item.type,
-  }));
+  })) as any;
 
   return (
     <Lightbox

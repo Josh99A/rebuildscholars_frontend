@@ -35,7 +35,7 @@ export default function GalleryClient() {
   const slides = filteredItems.map((item) => ({
     ...item,
     type: item.type,
-  }));
+  })) as any;
 
   return (
     <div className="space-y-10">

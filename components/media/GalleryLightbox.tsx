@@ -2,7 +2,7 @@
 
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import ReactPlayer from "react-player";
+import dynamic from "next/dynamic";
 import type { GalleryItem } from "@/lib/galleryData";
 import "yet-another-react-lightbox/styles.css";
 
@@ -17,7 +17,7 @@ export default function GalleryLightbox({
   index,
   onClose,
 }: GalleryLightboxProps) {
-  const Player = ReactPlayer as any;
+  const Player = dynamic(() => import("react-player"), { ssr: false }) as any;
   const slides = items.map((item) => ({
     ...item,
     type: item.type,

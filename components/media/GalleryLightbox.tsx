@@ -31,8 +31,8 @@ export default function GalleryLightbox({
       slides={slides}
       plugins={[Zoom]}
       render={{
-        slide: ({ slide }) => {
-          if ((slide as any).type !== "video") return undefined;
+        slide: ({ slide }: { slide: any }) => {
+          if (slide.type !== "video") return undefined;
           return (
             <div className="flex h-full w-full items-center justify-center bg-[var(--overlay-strong)]">
               <div className="w-full max-w-5xl px-6">

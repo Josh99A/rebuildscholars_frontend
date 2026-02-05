@@ -31,12 +31,12 @@ export default function GalleryLightbox({
       plugins={[Zoom]}
       render={{
         slide: ({ slide }) => {
-          if (slide.type !== "video") return undefined;
+          if ((slide as any).type !== "video") return undefined;
           return (
             <div className="flex h-full w-full items-center justify-center bg-[var(--overlay-strong)]">
               <div className="w-full max-w-5xl px-6">
                 <ReactPlayer
-                  url={slide.src}
+                  url={(slide as any).src}
                   playing
                   controls
                   width="100%"

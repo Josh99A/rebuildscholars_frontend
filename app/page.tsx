@@ -79,7 +79,12 @@ export default function HomePage() {
                 key={program.slug}
                 className="h-full rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 transition hover:-translate-y-1 hover:border-[var(--primary)] hover:shadow-[0_18px_36px_-26px_color-mix(in_oklab,var(--secondary)_55%,transparent)]"
               >
-                <h3 className="text-xl font-semibold">{program.title}</h3>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--secondary)]">
+                  <span className="rounded-full border border-[color-mix(in_oklab,var(--secondary)_30%,transparent)] bg-[color-mix(in_oklab,var(--secondary)_12%,transparent)] px-3 py-1">
+                    {program.category}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-xl font-semibold">{program.title}</h3>
                 <p className="mt-3 text-sm text-[var(--muted)]">
                   {program.summary}
                 </p>

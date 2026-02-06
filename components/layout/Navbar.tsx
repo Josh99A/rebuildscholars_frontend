@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import ThemeToggle from "../theme/ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +16,14 @@ const navLinks = [
   { href: "/get-involved", label: "Get Involved" },
   { href: "/donate", label: "Donate" },
   { href: "/contact", label: "Contact" },
+];
+
+const programCategories = [
+  { label: "All programs", value: "All categories" },
+  { label: "Health", value: "Health" },
+  { label: "Education", value: "Education" },
+  { label: "Climate", value: "Climate" },
+  { label: "Innovation", value: "Innovation" },
 ];
 
 export default function Navbar() {
@@ -49,15 +57,49 @@ export default function Navbar() {
           Re-build Scholars
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-[var(--muted)] transition hover:text-[var(--secondary)]"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            if (link.label !== "Programs") {
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[var(--muted)] transition hover:text-[var(--secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)]"
+                >
+                  {link.label}
+                </Link>
+              );
+            }
+
+            return (
+              <details key={link.href} className="group relative">
+                <summary className="flex cursor-pointer list-none items-center gap-1 text-[var(--muted)] transition hover:text-[var(--secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)] [&::-webkit-details-marker]:hidden">
+                  Programs <ChevronDown size={16} />
+                </summary>
+                <div className="absolute left-0 mt-3 w-56 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-2 shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--secondary)_50%,transparent)]">
+                  {programCategories.map((category) => (
+                    <Link
+                      key={category.value}
+                      href={
+                        category.value === "All categories"
+                          ? "/programs"
+                          : `/programs?category=${encodeURIComponent(
+                              category.value
+                            )}`
+                      }
+                      className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm text-[var(--muted)] transition hover:bg-[color-mix(in_oklab,var(--secondary)_12%,transparent)] hover:text-[var(--secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--card)]"
+                    >
+                      {category.label}
+                      {category.value !== "All categories" ? (
+                        <span className="text-xs text-[var(--secondary)]">
+                          {category.value}
+                        </span>
+                      ) : null}
+                    </Link>
+                  ))}
+                </div>
+              </details>
+            );
+          })}
           <ThemeToggle />
         </nav>
         <div className="flex items-center gap-3 md:hidden">
@@ -80,16 +122,50 @@ export default function Navbar() {
         )}
       >
         <nav className="flex flex-col px-6 py-4 text-sm font-medium">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="py-2 text-[var(--muted)] transition hover:text-[var(--secondary)]"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            if (link.label !== "Programs") {
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="py-2 text-[var(--muted)] transition hover:text-[var(--secondary)]"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            }
+
+            return (
+              <div key={link.href} className="py-2">
+                <Link
+                  href={link.href}
+                  className="text-[var(--muted)] transition hover:text-[var(--secondary)]"
+                  onClick={() => setOpen(false)}
+                >
+                  Programs
+                </Link>
+                <div className="mt-3 flex flex-col gap-2 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-3 text-xs">
+                  {programCategories.map((category) => (
+                    <Link
+                      key={category.value}
+                      href={
+                        category.value === "All categories"
+                          ? "/programs"
+                          : `/programs?category=${encodeURIComponent(
+                              category.value
+                            )}`
+                      }
+                      className="rounded-xl px-3 py-2 text-[var(--muted)] transition hover:bg-[color-mix(in_oklab,var(--secondary)_12%,transparent)] hover:text-[var(--secondary)]"
+                      onClick={() => setOpen(false)}
+                    >
+                      {category.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </nav>
       </div>
     </header>
